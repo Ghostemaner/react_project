@@ -38,7 +38,26 @@
 }
 
 .message {
-  color: red;
-  font-size: 30px;
-  text-decoration: underline
+  color: black;
+  font-size: 20px;
+  }
+
+.messageList {
+  background: white;
+  width: 500px;
+  min-height: 500px;
+}
+
+.input {
+  width: 350px;
+  height: 20px;
+}
+
+.button{
+  height: 25px;
+  margin-left: 20px;
+}
+
+.form {
+  padding-top: 10px;
 }
