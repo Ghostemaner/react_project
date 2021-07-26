@@ -1,5 +1,15 @@
 .App {
   text-align: center;
+  
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  position: relative;
+  
 }
 
 .App-logo {
@@ -42,22 +52,29 @@
   font-size: 20px;
   }
 
-.messageList {
+.message-list {
   background: white;
   width: 500px;
   min-height: 500px;
-}
-
-.input {
-  width: 350px;
-  height: 20px;
-}
-
-.button{
-  height: 25px;
-  margin-left: 20px;
+  
 }
 
 .form {
-  padding-top: 10px;
+  display: flex;
+  padding-top: 20px;
+  width: 100%;
+  }
+
+input {
+  color: white !important;
+}
+
+.form-panel {
+  width: 100px;
+}
+
+.list{
+  position: absolute;
+  left: -140px;
+  
 }
