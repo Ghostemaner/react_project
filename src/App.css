@@ -7,7 +7,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 1000px;
   margin: 0 auto;
+  padding-top: 50px;
   position: relative;
   
 }
@@ -26,12 +28,7 @@
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  display: block;
 }
 
 .App-link {
@@ -50,12 +47,16 @@
 .message {
   color: black;
   font-size: 20px;
+  text-align: left;
   }
 
 .message-list {
   background: white;
-  width: 500px;
-  min-height: 500px;
+  width: 1000px;
+  height: 500px;
+  padding: 10px;
+  overflow-y: scroll;
+  word-break: break-all;
   
 }
 
@@ -76,5 +77,50 @@ input {
 .list{
   position: absolute;
   left: -140px;
+  color: white;
+ }
+
+.nav-header {
+  display: flex;
+  justify-content: space-around;
+  font-size: 30px;
+  height: 50px;
   
+}
+
+.nav-header > a {
+  text-decoration: none;
+  color: black;
+}
+
+.main {
+  font-size: 70px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.attention-block {
+  background-color: white;
+  width: 1000px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.attention-text {
+  font-size: 29px;
+}
+
+.route-error {
+  font-size: 70px;
+  text-align: center;
+}
+
+.title-home {
+  color: white;
+  font-size: 30px;
+
 }
