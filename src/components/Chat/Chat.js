@@ -16,29 +16,47 @@ export default function Chat(props) {
     const { chatId } = useParams()
     
     const match = useRouteMatch('/chats/:chatId')
+    
    
+   const chatList = [
+    {
+      name: "Chat 1",
+      id: 'chat2332'
+    },
+    {
+      name: "Chat 2",
+      id: 'chat1312'
+    },
+    {
+      name: "Chat 3",
+      id: 'chat4332'
+    },
+    {
+      name: "Chat 4",
+      id: 'chat4123'
+    }
+  ]
+  
+let chatIs = false;
+
+   if(chatId) {
+     chatList.forEach( (chat)=>{
+        if(chatId === chat.id) {
+          console.log("chat exist");
+          chatIs = true; //выводим чат
+          
+        }
+     }); 
+        if(chatIs === false) {
+          console.log("chat not exist");
+        }
+   }
+
     const [messageList, setMessageList] = React.useState([])
   
     const [textValue, setTextValue] = React.useState('')
   
-    const chatList = [
-      {
-        name: "Chat 1",
-        id: 2332
-      },
-      {
-        name: "Chat 2",
-        id: 1312
-      },
-      {
-        name: "Chat 3",
-        id: 4332
-      },
-      {
-        name: "Chat 4",
-        id: 4123
-      }
-    ]
+    
   
     const authors = {
       person: 'Guest',

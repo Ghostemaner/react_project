@@ -124,3 +124,14 @@ input {
   font-size: 30px;
 
 }
+
+.checkbox-container {
+  background-color: #282c34;
+  height: 100vh;
+}
+
+.info-block {
+  color: white;
+  padding-left: 100px;
+  padding-top: 60px;
+}

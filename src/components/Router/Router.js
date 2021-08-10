@@ -4,6 +4,7 @@ import App from '../../App';
 import '../../App.css'
 import Chats from '../Chats/Chats';
 import Chat from '../Chat/Chat';
+import Profile from '../Profile/Profile'
 
 export default function Router() {
     
@@ -18,7 +19,7 @@ export default function Router() {
         <Switch>
             <Route path='/' exact component={App} />
            
-            <Route path='/profile' exact render={() => <p className='main'>Profile Page</p> }/>
+            <Route path='/profile' exact render={() => <Profile /> }/>
 
             <Route path='/chats' exact component={Chats}></Route>
 
