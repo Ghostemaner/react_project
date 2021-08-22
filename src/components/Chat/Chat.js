@@ -7,6 +7,12 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import { useParams, useRouteMatch } from 'react-router';
 import { useHistory } from 'react-router-dom';
+import Chats from '../Chats/Chats';
+import { useDispatch, useSelector } from 'react-redux';
+import { sendMessage } from '../../actions/messages'
+
+
+
 
 
 
@@ -17,106 +23,159 @@ export default function Chat(props) {
     
     const match = useRouteMatch('/chats/:chatId')
     
-   
-   const chatList = [
-    {
-      name: "Chat 1",
-      id: 'chat2332'
-    },
-    {
-      name: "Chat 2",
-      id: 'chat1312'
-    },
-    {
-      name: "Chat 3",
-      id: 'chat4332'
-    },
-    {
-      name: "Chat 4",
-      id: 'chat4123'
-    }
-  ]
-  
-let chatIs = false;
+    
+    const messageList = useSelector((state) => state.messages[chatId] || [])
+    const dispatch = useDispatch()
+ 
+ 
 
-   if(chatId) {
-     chatList.forEach( (chat)=>{
-        if(chatId === chat.id) {
-          console.log("chat exist");
-          chatIs = true; //выводим чат
-          
-        }
-     }); 
-        if(chatIs === false) {
-          console.log("chat not exist");
-        }
-   }
-
-    const [messageList, setMessageList] = React.useState([])
+    // const [messageList, setMessageList] = React.useState([])
   
     const [textValue, setTextValue] = React.useState('')
   
+    const handleMessageChange = (e) => {
+      setTextValue(e.target.value)
+    }
     
-  
+    
+
     const authors = {
       person: 'Guest',
       bot: "BOT"
     }
+
+  const handlePrevent = (e) => {
+    e.preventDefault()
+  }
+  
+
+  const handleSendMessage = (newMessage) => {
+    
+    if(newMessage !== '') {
+
+      dispatch(
+        sendMessage(chatId, {
+          id: `message${Date.now()}`,
+          author: authors.person,
+          text: newMessage,
+          messageTime: getTime()
+        })
+      )
+      setTextValue("")
+    }
+  }
+    
+    
   
     
-    const handleMessageChange = (e) => {
-      setTextValue(e.target.value)
+    
+  
+    // const handleMessageSubmit = (e) => {
+    //   e.preventDefault()
+    //   if(textValue) {
+    //     setMessageList((currentMessageList) => 
+    //     [ ...currentMessageList, 
+    //     {
+    //       author: authors.person, 
+    //       text: textValue,
+    //       messageTime: getTime()
+
+    //     },
+    //     ], )
+    //     setTextValue("");
+
+    //     setTimeout(() => {
+    //       scrollToBottom();
+    //     }, 100);
+        
+    //   }
+      
+      
+    // }
+  
+    // React.useEffect(() => {
+    //   if (messageList.length && messageList[messageList.length - 1].author !== authors.bot) {
+    //     setTimeout(() => {
+    //       setMessageList((currentMessageList) => 
+    //       [ ...currentMessageList, 
+    //       {
+    //         author: authors.bot, 
+    //         text: "Ваше сообщение отправлено!",
+    //         messageTime: getTime()
+    //       },
+    //       ]) 
+    //       scrollToBottom();
+    //       }, 1500);
+          
+          
+    //   }
+      
+    // }, [messageList])
+
+
+
+    const scrollToBottom = () => {
+      const div = document.getElementById("mess-list");
+      div.scrollTop = div.scrollHeight - div.clientHeight;
+   }
+    const data = new Date();
+
+    const getTime = () => {
+      return data.getHours() + ":" + data.getMinutes();
     }
   
-    const handleMessageSubmit = (e) => {
-      e.preventDefault()
-      if(textValue) {
-        setMessageList((currentMessageList) => 
-        [ ...currentMessageList, 
-        {
-          author: authors.person, 
-          text: textValue
-        },
-        ])
-        setTextValue("")
+    const history = useHistory()
+
+    const handleGoBack = () => {
+      history.push(`/chats/`)
+    }
+
+    
+    const chats = useSelector((state) => state.chats)
+  
+    let chatName = '';
+
+   
+
+    for (let item of Object.values(chats)) {
+      if (chatId == item.id) {
+        chatName = item.name
       }
-      
     }
   
-    React.useEffect(() => {
-      if (messageList.length && messageList[messageList.length - 1].author !== authors.bot) {
-        setTimeout(() => {
-          setMessageList((currentMessageList) => 
-          [ ...currentMessageList, 
-          {
-            author: authors.bot, 
-            text: "Ваше сообщение отправлено!"
-          },
-          ])
-          }, 1500)
-      }
-      
-    }, [messageList])
-  
-  
+    if (chatName == "") {
+      chatName = "CHAT NOT FOUND"
+    }
+    
+
+
+   
+
     return (
+      
       <div className="App App-header">
-        <div className="container">
+        
+        <div className="container container-chat">
+        
         <div className='list'>
-              <List component="nav" aria-label="main mailbox folders">
-                {chatList.map((chat, id) => <React.Fragment key={chat.id}><ListItem button>
-                  <ListItemText primary={chat.name} />
-                </ListItem></React.Fragment>)}
-              </List>
+          <span><Button variant="contained" color="primary" className='to-back' onClick={handleGoBack}>to back</Button></span>
           </div>
-          <div className="message-list">
-            {messageList.map((message, index) => <React.Fragment key={index}><div className="message">{message.author}{}<br />{message.text}</div></React.Fragment>)}
+          <p className='chat-id'>CHAT: {chatName}</p>
+          <hr />
+            <pre id="mess-list" className="message-list">
+              {messageList.map((message) => <React.Fragment key={message.id}><div className="message"><div className={"mes-" + message.author}><strong>{message.author}</strong> <i>{message.messageTime}</i><br />{message.text}</div></div></React.Fragment>)}
+            </pre>
+            
+            <form className="form" onSubmit={handlePrevent}>
+                <TextField className='input-write' id="outlined-basic" fullWidth={true} label="message" autoFocus={true} variant="outlined" required placeholder="Введите сообщение" value={textValue} onChange={handleMessageChange}/>
+                <Button type="submit" variant="contained" color="primary" onClick={()=> handleSendMessage(textValue)}>Send</Button>
+            </form>
+            
           </div>
-          <form className="form" onSubmit={handleMessageSubmit}>
-            <TextField className='input' id="outlined-basic" fullWidth={true} label="message" autoFocus={true} variant="outlined" required placeholder="Введите сообщение" value={textValue} onChange={handleMessageChange}/>
-            <Button variant="contained" color="primary" onClick={handleMessageSubmit}>Send</Button>
-          </form>
-        </div>
+          
+            
+          
+        
       </div>
     );
   }

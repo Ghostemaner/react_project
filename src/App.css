@@ -11,6 +11,7 @@
   margin: 0 auto;
   padding-top: 50px;
   position: relative;
+  padding-left: 150px;
   
 }
 
@@ -44,11 +45,6 @@
   }
 }
 
-.message {
-  color: black;
-  font-size: 20px;
-  text-align: left;
-  }
 
 .message-list {
   background: white;
@@ -58,6 +54,7 @@
   overflow-y: scroll;
   word-break: break-all;
   
+  
 }
 
 .form {
@@ -66,8 +63,8 @@
   width: 100%;
   }
 
-input {
-  color: white !important;
+.MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-fullWidth.MuiInputBase-formControl{
+  color: white;
 }
 
 .form-panel {
@@ -78,7 +75,11 @@ input {
   position: absolute;
   left: -140px;
   color: white;
- }
+  border: 1px solid;
+  padding: 20px;
+}
+
+
 
 .nav-header {
   display: flex;
@@ -104,7 +105,7 @@ input {
 .attention-block {
   background-color: white;
   width: 1000px;
-  height: 200px;
+  min-height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -135,3 +136,97 @@ input {
   padding-left: 100px;
   padding-top: 60px;
 }
+
+.list-chats > .list-item:last-child {
+  position: relative;
+}
+
+
+
+.list-item {
+  font-size: 20px;
+}
+
+.list-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.chat-dell-button{
+  height: 25px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+.message {
+  color: black;
+  font-size: 20px;
+  clear: both;
+  white-space: break-spaces;
+  
+}
+
+.message > div {
+  text-align: right;
+  background-color: lightblue;
+  display: inline-block;
+  float: right;
+  border-radius: 12px 12px 0 12px;
+  margin-bottom: 6px;
+  padding: 10px;
+  max-width: 50%;
+}
+
+
+.message > .mes-BOT {
+  text-align: left;
+  background-color: lightgreen;
+  float: left;
+  border-radius: 12px 12px 12px 0;
+  margin-bottom: 6px;
+  padding: 10px;
+  max-width: 50%;
+}
+
+.new-chat-add {
+  color: black;
+}
+
+.App-header-chats {
+  background-color: #282c34;
+  min-height: 100vh;
+}
+
+
+
+.MuiInputBase-input.MuiOutlinedInput-input {
+  color: white;
+  width: 300px;
+}
+
+.MuiButton-label {
+  
+  height: 16px;
+}
+
+.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary {
+  height: 55px;
+}
+
+.chat-id{
+  color: white;
+  display: inline;
+  text-align: left;
+  width: 100%;
+  
+}
+
+hr {
+  width: 100%;
+  height: 2px;
+}
+
+
+

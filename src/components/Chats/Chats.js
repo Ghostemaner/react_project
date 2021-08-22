@@ -7,39 +7,72 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import Chat from '../Chat/Chat';
 import { Link } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { removeChat, addChat } from '../../actions/chats';
 
 export default function Chats(){
-    
-  const [chatList, setChatList] = React.useState([
-    {
-      name: "Chat 1",
-      id: 'chat1243'
-    },
-    {
-      name: "Chat 2",
-      id: 'chat5312'
-    },
-    {
-      name: "Chat 3",
-      id: 'chat2342'
-    },
-    {
-      name: "Chat 4",
-      id: 'chat4332'
+
+  const [inputValue, setInputValue] = React.useState('')
+
+  const handleNameChange = (e) => {
+    setInputValue(e.target.value)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
+
+  const history = useHistory()
+
+  const chats = useSelector((state) => state.chats)
+  const dispatch = useDispatch()
+
+  const handleLinkChat  = (chat) => {
+    history.push(`/chats/${chat.id}`)
+  }
+
+  const handleAddChat = (name) => {
+    if(name !== '') {
+      dispatch(addChat(`chat${getRandomNamber()}`, name))
+      setInputValue("")
     }
-  ])
+    
+  }
+
+  const getRandomNamber = () => {
+    return Math.ceil((Math.random() * Date.now()) / 100000)
+  }
+
+  
+
+  const handleRemoveChat = (chatId) => {
+    console.log(chatId)
+    dispatch(removeChat(chatId))
+  }
     
 return (
-    <div className="App App-header">
+    <div className="App-header-chats">
       <div className="container">
       <div className='list'>
-            <List component="nav" aria-label="main mailbox folders">
-              {chatList.map((chat, id) => <ListItem key={chat.id} button>
-                <ListItemText primary={chat.name} />
-              </ListItem>)}
-            </List>
+          <form onSubmit={handleSubmit}>
+                <TextField className='input-write' id="outlined-basic" label="Chat name" autoFocus={true} variant="outlined" required placeholder="create a new chat" value={inputValue} onChange={handleNameChange}/>
+                <Button variant="contained" color="primary" type="submit" onClick={() => handleAddChat(inputValue)}>+</Button>
+          </form>
+          <List component="nav" className='list-chats' aria-label="main mailbox folders">
+              {Object.values(chats).map((chat) => (
+              <div key={chat.id} className="list-container">  
+              <ListItem 
+                className="list-item" 
+                button
+                onClick={() => handleLinkChat(chat)}>
+                {chat.name}
+                </ListItem>
+                <button  onClick={() => handleRemoveChat(chat.id)}>&times;</button>
+                </div>
+                ))}
+          </List>
         </div>
-        <div className="attention-block"><p className='attention-text'>Select a chat to continue the conversation...</p></div>
       </div>
     </div>
   );
