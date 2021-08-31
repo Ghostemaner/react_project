@@ -4,12 +4,18 @@ import TextField from '@material-ui/core/TextField';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Divider from '@material-ui/core/Divider';
 import Chat from '../Chat/Chat';
 import { Link } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { removeChat, addChat } from '../../actions/chats';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faTimes, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+
+
+
 
 export default function Chats(){
 
@@ -55,9 +61,12 @@ return (
     <div className="App-header-chats">
       <div className="container">
       <div className='list'>
+      
           <form onSubmit={handleSubmit}>
-                <TextField className='input-write' id="outlined-basic" label="Chat name" autoFocus={true} variant="outlined" required placeholder="create a new chat" value={inputValue} onChange={handleNameChange}/>
-                <Button variant="contained" color="primary" type="submit" onClick={() => handleAddChat(inputValue)}>+</Button>
+         
+                <TextField className='input-write' autoComplete='off' id="outlined-basic" label="Chat name" autoFocus={true} variant="outlined" placeholder="create a new chat" value={inputValue} onChange={handleNameChange}/>
+                <Button variant="contained" color="primary" type="submit" onClick={() => handleAddChat(inputValue)}><FontAwesomeIcon fixedWidth  icon={faPlus} /></Button>
+          
           </form>
           <List component="nav" className='list-chats' aria-label="main mailbox folders">
               {Object.values(chats).map((chat) => (
@@ -68,11 +77,12 @@ return (
                 onClick={() => handleLinkChat(chat)}>
                 {chat.name}
                 </ListItem>
-                <button  onClick={() => handleRemoveChat(chat.id)}>&times;</button>
+                <a  onClick={() => handleRemoveChat(chat.id)}><FontAwesomeIcon fixedWidth size="lg" icon={faTimes} /></a>
                 </div>
                 ))}
           </List>
         </div>
+        
       </div>
     </div>
   );

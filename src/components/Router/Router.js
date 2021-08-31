@@ -5,15 +5,17 @@ import '../../App.css'
 import Chats from '../Chats/Chats';
 import Chat from '../Chat/Chat';
 import Profile from '../Profile/Profile'
+import { faUser, faHome, faComments} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Router() {
     
     return (
     <div>
         <div className='nav-header'>
-            <Link to='/'>Home</Link>
-            <Link to='/chats'>Chats</Link>
-            <Link to='/profile'>Profile</Link>
+            <Link to='/'><FontAwesomeIcon fixedWidth  icon={faHome} /> Home</Link>
+            <Link to='/chats'><FontAwesomeIcon fixedWidth  icon={faComments} />Chats</Link>
+            <Link to='/profile'><FontAwesomeIcon fixedWidth  icon={faUser} />Profile</Link>
         </div>
 
         <Switch>
