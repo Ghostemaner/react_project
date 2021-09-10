@@ -177,7 +177,7 @@ export default function Chat(props) {
             </pre>
             
             <form className="form" onSubmit={handlePrevent}>
-                <TextField prefixIcon className='input-write' id="outlined-basic" fullWidth={true} label="message" autoFocus={true} variant="outlined" autoComplete='off' placeholder="Введите сообщение" value={textValue} onChange={handleMessageChange} />
+                <TextField className='input-write' id="outlined-basic" fullWidth={true} label="message" autoFocus={true} variant="outlined" autoComplete='off' placeholder="Введите сообщение" value={textValue} onChange={handleMessageChange} />
                 <Button type="submit" variant="contained" color="primary" onClick={()=> handleSendMessage(textValue)}><FontAwesomeIcon fixedWidth icon={faAngleRight} size='2x'/></Button> 
             </form>
             

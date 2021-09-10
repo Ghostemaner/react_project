@@ -4,6 +4,7 @@ import App from '../../App';
 import '../../App.css'
 import Chats from '../Chats/Chats';
 import Chat from '../Chat/Chat';
+import Weather from '../Widgets/Weather';
 import Profile from '../Profile/Profile'
 import { faUser, faHome, faComments} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -27,7 +28,7 @@ export default function Router() {
 
             <Route path='/chats/:chatId' render={() => <Chat />}/>
 
-            <Route>
+          <Route>
                 <p className='route-error'>404: NOT FOUND</p>
             </Route>
         </Switch>

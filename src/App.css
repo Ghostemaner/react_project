@@ -73,7 +73,7 @@
 
 .list{
   position: absolute;
-  left: -140px;
+  left: -240px;
   color: white;
   border: 1px solid;
   padding: 20px;
@@ -86,12 +86,17 @@
   justify-content: space-around;
   font-size: 30px;
   height: 50px;
+  background-color: #404550;
   
 }
 
 .nav-header > a {
   text-decoration: none;
-  color: black;
+  color: #8c8e9b;
+}
+
+.nav-header > a:hover {
+  color: white;
 }
 
 .main {
@@ -227,5 +232,45 @@ hr {
   height: 2px;
 }
 
+.weather-block {
+  text-align: right;
+  right: 20px;
+  top: 80px;
+  position: absolute;
+  font-size: 24px;
+  color: white;
+}
+
+
+.canvas {
+  width: 150px;
+  height: 150px;
+}
+
+.watch {
+  display: inline-block;
+  background-color: #282c34;
+}
+
+.weather-icon {
+  width: 64px;
+  height: 64px;
+}
+
+.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-outlined {
+  color: rgba(255, 255, 255, .54);
+}
+
+.PrivateNotchedOutline-root-1.MuiOutlinedInput-notchedOutline{
+  border-color: rgba(255, 255, 255, .18);
+}
+
+.MuiInputBase-root {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.23);
+}
 
 
