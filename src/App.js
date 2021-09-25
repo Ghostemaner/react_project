@@ -1,16 +1,26 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import Message from './Message';
+import { store } from './store'
+import Weather from './components/Widgets/Weather';
+import Watch from './components/Widgets/Watch';
 
-const text = "const's value";
 
 function App() {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <Message text={text}/>
-        </header>
-    </div>
+    <>
+      
+      <Weather />
+      <div className="App App-header main">
+      
+        <p className='title-home'>
+        <Watch /><br/><br/>
+        Welcome to React.Messenger!</p>
+        
+      </div>
+      
+    </>
   );
 }
 

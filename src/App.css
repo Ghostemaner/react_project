@@ -1,5 +1,18 @@
 .App {
   text-align: center;
+  
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1000px;
+  margin: 0 auto;
+  padding-top: 50px;
+  position: relative;
+  padding-left: 150px;
+  
 }
 
 .App-logo {
@@ -16,12 +29,7 @@
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  display: block;
 }
 
 .App-link {
@@ -37,8 +45,232 @@
   }
 }
 
-.message {
-  color: red;
-  font-size: 30px;
-  text-decoration: underline
+
+.message-list {
+  background: white;
+  width: 1000px;
+  height: 500px;
+  padding: 10px;
+  overflow-y: scroll;
+  word-break: break-all;
+  
+  
 }
+
+.form {
+  display: flex;
+  padding-top: 20px;
+  width: 100%;
+  }
+
+.MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-fullWidth.MuiInputBase-formControl{
+  color: white;
+}
+
+.form-panel {
+  width: 100px;
+}
+
+.list{
+  position: absolute;
+  left: -240px;
+  color: white;
+  border: 1px solid;
+  padding: 20px;
+}
+
+
+
+.nav-header {
+  display: flex;
+  justify-content: space-around;
+  font-size: 30px;
+  height: 50px;
+  background-color: #404550;
+  
+}
+
+.nav-header > a {
+  text-decoration: none;
+  color: #8c8e9b;
+}
+
+.nav-header > a:hover {
+  color: white;
+}
+
+.main {
+  font-size: 70px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.attention-block {
+  background-color: white;
+  width: 1000px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.attention-text {
+  font-size: 29px;
+}
+
+.route-error {
+  font-size: 70px;
+  text-align: center;
+}
+
+.title-home {
+  color: white;
+  font-size: 30px;
+
+}
+
+.checkbox-container {
+  background-color: #282c34;
+  height: 100vh;
+}
+
+.info-block {
+  color: white;
+  padding-left: 100px;
+  padding-top: 60px;
+}
+
+.list-chats > .list-item:last-child {
+  position: relative;
+}
+
+
+
+.list-item {
+  font-size: 20px;
+}
+
+.list-container {
+  display: flex;
+  align-items: center;
+}
+
+.chat-dell-button{
+  height: 25px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+.message {
+  color: black;
+  font-size: 20px;
+  clear: both;
+  white-space: break-spaces;
+  
+}
+
+.message > div {
+  text-align: right;
+  background-color: lightblue;
+  display: inline-block;
+  float: right;
+  border-radius: 12px 12px 0 12px;
+  margin-bottom: 6px;
+  padding: 10px;
+  max-width: 50%;
+}
+
+
+.message > .mes-BOT {
+  text-align: left;
+  background-color: lightgreen;
+  float: left;
+  border-radius: 12px 12px 12px 0;
+  margin-bottom: 6px;
+  padding: 10px;
+  max-width: 50%;
+}
+
+.new-chat-add {
+  color: black;
+}
+
+.App-header-chats {
+  background-color: #282c34;
+  min-height: 100vh;
+}
+
+
+
+.MuiInputBase-input.MuiOutlinedInput-input {
+  color: white;
+  width: 300px;
+}
+
+.MuiButton-label {
+  
+  height: 16px;
+}
+
+.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary {
+  height: 55px;
+}
+
+.chat-id{
+  color: white;
+  display: inline;
+  text-align: left;
+  width: 100%;
+  
+}
+
+hr {
+  width: 100%;
+  height: 2px;
+}
+
+.weather-block {
+  text-align: right;
+  right: 20px;
+  top: 80px;
+  position: absolute;
+  font-size: 24px;
+  color: white;
+}
+
+
+.canvas {
+  width: 150px;
+  height: 150px;
+}
+
+.watch {
+  display: inline-block;
+  background-color: #282c34;
+}
+
+.weather-icon {
+  width: 64px;
+  height: 64px;
+}
+
+.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-outlined {
+  color: rgba(255, 255, 255, .54);
+}
+
+.PrivateNotchedOutline-root-1.MuiOutlinedInput-notchedOutline{
+  border-color: rgba(255, 255, 255, .18);
+}
+
+.MuiInputBase-root {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.23);
+}
+
+
